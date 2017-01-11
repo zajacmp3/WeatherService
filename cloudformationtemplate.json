@@ -1,77 +1,39 @@
 {
-
- "AWSTemplateFormatVersion": "2010-09-09",
-
- "Resources": {
-
-   "R53HZ3KVVH": {
-
-     "Type": "AWS::Route53::HostedZone",
-
-     "Properties": {
-
-       "HostedZoneConfig": {
-
-         "Comment": "My hosted zone for weatherreport.zajac.ovh"
-
-       },
-
-       "Name": "weatherreport.zajac.ovh"
-
-     },
-
-     "Metadata": {
-
-       "AWS::CloudFormation::Designer": {
-
-         "id": "cf877c36-6736-40b1-b17c-eb0c4d0993c6"
-
-       }
-
-     }
-
-   },
-
-   "R53RS3RA11": {
-
-     "Type": "AWS::Route53::RecordSet",
-
-     "Properties": {
-
-       "HostedZoneId": {
-
-         "Ref": "R53HZ3KVVH"
-
-       },
-
-       "HostedZoneName": "zajac.ovh.",
-
-       "Name": "weatherservice.zajac.ovh.",
-
-       "Type": "CNAME",
-
-       "TTL": "300",
-
-       "ResourceRecords": [
-
-        "weatherreportrelease.s3-website-us-west-2.amazonaws.com"
-
-       ]
-
-     },
-
-     "Metadata": {
-
-       "AWS::CloudFormation::Designer": {
-
-         "id": "b919211a-2b4c-4788-b378-d2df4ba77c92"
-
-       }
-
-     }
-
-   }
-
- }
-
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "R53HZ3KVVH": {
+      "Type": "AWS::Route53::HostedZone",
+      "Properties": {
+        "HostedZoneConfig": {
+          "Comment": "My hosted zone for weatherreport.zajac.ovh"
+        },
+        "Name": "weatherreport.zajac.ovh"
+      },
+      "Metadata": {
+        "AWS::CloudFormation::Designer": {
+          "id": "cf877c36-6736-40b1-b17c-eb0c4d0993c6"
+        }
+      }
+    },
+    "R53RS3RA11": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "HostedZoneId": {
+          "Ref": "R53HZ3KVVH"
+        },
+        "HostedZoneName": "zajac.ovh.",
+        "Name": "weatherservice.zajac.ovh.",
+        "Type": "CNAME",
+        "TTL": "300",
+        "ResourceRecords": [
+          {"Value": "weatherreportrelease.s3-website-us-west-2.amazonaws.com"}
+        ]
+      },
+      "Metadata": {
+        "AWS::CloudFormation::Designer": {
+          "id": "b919211a-2b4c-4788-b378-d2df4ba77c92"
+        }
+      }
+    }
+  }
 }
