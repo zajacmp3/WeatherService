@@ -21,12 +21,11 @@
         "HostedZoneId": {
           "Ref": "R53HZ3KVVH"
         },
-        "HostedZoneName": "zajac.ovh.",
         "Name": "weatherservice.zajac.ovh.",
         "Type": "CNAME",
         "TTL": "300",
         "ResourceRecords": [
-          {"Value": "weatherreportrelease.s3-website-us-west-2.amazonaws.com"}
+          "weatherreportrelease.s3-website-us-west-2.amazonaws.com"
         ]
       },
       "Metadata": {
