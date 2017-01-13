@@ -5,12 +5,10 @@
       "Type": "AWS::Route53::RecordSet",
       "Properties": {
         "HostedZoneName": "zajac.ovh.",
-        "Name": "weatherservice.zajac.ovh.",
+	"Name": {"Ref": "NameParameter"},
         "Type": "CNAME",
         "TTL": "300",
-        "ResourceRecords": [
-          "weatherreportrelease.s3-website-us-west-2.amazonaws.com"
-        ]
+	"ResourceRecords": { "Ref": "ResourceRecordsParameter" }
       },
       "Metadata": {
         "AWS::CloudFormation::Designer": {

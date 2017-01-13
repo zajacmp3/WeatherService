@@ -1,0 +1,6 @@
+"Parameters": {
+  "ResourceRecordsParameter": [
+        "weatherservice.zajac.ovh.s3-website-us-west-2.amazonaws.com"
+  ],
+  "NameParameter": "weatherservice.zajac.ovh."
+}
