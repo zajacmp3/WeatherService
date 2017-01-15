@@ -1,8 +1,16 @@
 {
-  "Parameters": {
-    "ResourceRecordsParameter": [
-          "beta.weatherservice.zajac.ovh.s3-website-us-west-2.amazonaws.com"
-    ],
-    "NameParameter": "beta.weatherservice.zajac.ovh."
+  "Parameters" : {
+    "ResourceRecordsParameter" : {
+      "Type" : "CommaDelimitedList",
+      "Default" : "beta.weatherreportrelease.s3-website-us-west-2.amazonaws.com",
+      "AllowedValues" : ["beta.weatherreportrelease.s3-website-us-west-2.amazonaws.com", "weatherreportrelease.s3-website-us-west-2.amazonaws.com"],
+      "Description" : "Enter t2.micro, m1.small, or m1.large. Default is t2.micro."
+    }
+  },
+  "NameParameter" : {
+    "Type" : "String",
+    "Default" : "weatherservice.zajac.ovh.",
+    "AllowedValues" : ["beta.weatherservice.zajac.ovh.", "weatherservice.zajac.ovh."],
+    "Description" : "Enter t2.micro, m1.small, or m1.large. Default is t2.micro."
   }
 }
