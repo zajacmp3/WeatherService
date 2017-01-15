@@ -1,0 +1,34 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "R53RS3RA11": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "HostedZoneName": "zajac.ovh.",
+        "Name": {"Ref": "NameParameter"},
+        "Type": "CNAME",
+        "TTL": "300",
+        "ResourceRecords": { "Ref": "ResourceRecordsParameter" }
+      },
+      "Metadata": {
+        "AWS::CloudFormation::Designer": {
+          "id": "b919211a-2b4c-4788-b378-d2df4ba77c92"
+        }
+      }
+    }
+  },
+  "Parameters" : {
+    "ResourceRecordsParameter" : {
+      "Type" : "CommaDelimitedList",
+      "Default" : "weatherreportrelease.s3-website-us-west-2.amazonaws.com",
+      "AllowedValues" : ["beta.weatherreportrelease.s3-website-us-west-2.amazonaws.com", "weatherreportrelease.s3-website-us-west-2.amazonaws.com"],
+      "Description" : "Enter t2.micro, m1.small, or m1.large. Default is t2.micro."
+    },
+    "NameParameter" : {
+      "Type" : "String",
+      "Default" : "weatherservice.zajac.ovh.",
+      "AllowedValues" : ["beta.weatherservice.zajac.ovh.", "weatherservice.zajac.ovh."],
+      "Description" : "Enter t2.micro, m1.small, or m1.large. Default is t2.micro."
+    }
+  }
+}
