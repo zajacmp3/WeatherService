@@ -1,6 +1,7 @@
 *.class
-.idea/
-DeepStream/node_modules
+.idea
+node-modules
+*.log
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 

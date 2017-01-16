@@ -1,0 +1,109 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "sampleApplication": {
+      "Type": "AWS::ElasticBeanstalk::Application",
+      "Properties": {
+        "Description": "WeatherReport DeepStream Application"
+      }
+    },
+    "sampleApplicationVersion": {
+      "Type": "AWS::ElasticBeanstalk::ApplicationVersion",
+      "Properties": {
+        "ApplicationName": { "Ref": "sampleApplication" },
+        "Description": "WeatherReport DeepStream Application Version",
+        "SourceBundle": {
+          "S3Bucket": { "Ref": "BucketParameter" },
+          "S3Key": { "Ref": "KeyParameter" }
+        }
+      }
+    },
+    "sampleConfigurationTemplate": {
+      "Type": "AWS::ElasticBeanstalk::ConfigurationTemplate",
+      "Properties": {
+        "ApplicationName": { "Ref": "sampleApplication" },
+        "Description": "WeatherReport DeepStream Configuration Template",
+        "OptionSettings": [
+          {
+            "Namespace": "aws:autoscaling:asg",
+            "OptionName": "MinSize",
+            "Value": "1"
+          },
+          {
+            "Namespace": "aws:autoscaling:asg",
+            "OptionName": "MaxSize",
+            "Value": "1"
+          },
+          {
+            "Namespace": "aws:elasticbeanstalk:environment",
+            "OptionName": "EnvironmentType",
+            "Value": "LoadBalanced"
+          },
+          {
+            "Namespace": "aws:autoscaling:launchconfiguration",
+            "OptionName": "SecurityGroups",
+            "Value": "launch-wizard-1"
+          },
+          {
+            "Namespace": "aws:elb:loadbalancer",
+            "OptionName": "Policies",
+            "Value": {
+              "Attributes" : [ { "Name" : "Protocol-SSLv3", "Value" : "true" } ],
+              "InstancePorts" : [ "80", "8080", "6379" ],
+              "LoadBalancerPorts" : [ "80", "8080", "6379" ],
+              "PolicyName" : "DeepStreamPolicy",
+              "PolicyType" : "ProxyProtocolPolicyType"
+            }
+          }
+        ],
+        "SolutionStackName": "64bit Amazon Linux 2016.09 v3.1.0 running Node.js"
+      }
+    },
+    "sampleEnvironment": {
+      "Type": "AWS::ElasticBeanstalk::Environment",
+      "Properties": {
+        "ApplicationName": { "Ref": "sampleApplication" },
+        "Description": "WeatherReport DeepStream Environment",
+        "TemplateName": { "Ref": "sampleConfigurationTemplate" },
+        "VersionLabel": { "Ref": "sampleApplicationVersion" }
+      }
+    },
+    "route53DeepStream": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "HostedZoneName": "zajac.ovh.",
+        "Name": { "Ref": "Route53NameParameter" },
+        "Type": "CNAME",
+        "TTL": "300",
+        "ResourceRecords": [
+          {
+            "Fn::GetAtt": [
+              "sampleEnvironment",
+              "EndpointURL"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "Parameters" : {
+    "BucketParameter" : {
+      "Type" : "String",
+      "Default" : "beta.deepstream.zajac.ovh.",
+      "AllowedValues" : ["beta.deepstream.zajac.ovh.", "deepstream.zajac.ovh."],
+      "Description" : "Enter t2.micro, m1.small, or m1.large. Default is t2.micro."
+    },
+    "KeyParameter" : {
+      "Type" : "String",
+      "Default" : "deepstreamdist.zip",
+      "AllowedValues" : ["deepstreamdist.zip"],
+      "Description" : "Enter t2.micro, m1.small, or m1.large. Default is t2.micro."
+    },
+    "Route53NameParameter" : {
+      "Type" : "String",
+      "Default" : "beta.deepstream.zajac.ovh.",
+      "AllowedValues" : ["beta.deepstream.zajac.ovh.", "deepstream.zajac.ovh."],
+      "Description" : "Enter t2.micro, m1.small, or m1.large. Default is t2.micro."
+    }
+  }
+}
