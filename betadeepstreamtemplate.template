@@ -78,8 +78,8 @@
   "Parameters" : {
     "BucketParameter" : {
       "Type" : "String",
-      "Default" : "beta.deepstream.zajac.ovh.",
-      "AllowedValues" : ["beta.deepstream.zajac.ovh.", "deepstream.zajac.ovh."],
+      "Default" : "beta.deepstream.weatherservice.zajac.ovh",
+      "AllowedValues" : ["beta.deepstream.weatherservice.zajac.ovh", "deepstream.weatherservice.zajac.ovh"],
       "Description" : "Enter t2.micro, m1.small, or m1.large. Default is t2.micro."
     },
     "KeyParameter" : {
@@ -90,8 +90,8 @@
     },
     "Route53NameParameter" : {
       "Type" : "String",
-      "Default" : "beta.deepstream.zajac.ovh.",
-      "AllowedValues" : ["beta.deepstream.zajac.ovh.", "deepstream.zajac.ovh."],
+      "Default" : "beta.deepstream.weatherservice.zajac.ovh.",
+      "AllowedValues" : ["beta.deepstream.weatherservice.zajac.ovh.", "deepstream.weatherservice.zajac.ovh."],
       "Description" : "Enter t2.micro, m1.small, or m1.large. Default is t2.micro."
     }
   }
