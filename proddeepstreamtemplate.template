@@ -43,17 +43,6 @@
             "Namespace": "aws:autoscaling:launchconfiguration",
             "OptionName": "SecurityGroups",
             "Value": "launch-wizard-1"
-          },
-          {
-            "Namespace": "aws:elb:loadbalancer",
-            "OptionName": "Policies",
-            "Value": {
-              "Attributes" : [ { "Name" : "Protocol-SSLv3", "Value" : "true" } ],
-              "InstancePorts" : [ "80", "8080", "6379" ],
-              "LoadBalancerPorts" : [ "80", "8080", "6379" ],
-              "PolicyName" : "DeepStreamPolicy",
-              "PolicyType" : "ProxyProtocolPolicyType"
-            }
           }
         ],
         "SolutionStackName": "64bit Amazon Linux 2016.09 v3.1.0 running Node.js"
