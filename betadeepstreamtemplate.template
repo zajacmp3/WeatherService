@@ -43,6 +43,11 @@
             "Namespace": "aws:autoscaling:launchconfiguration",
             "OptionName": "SecurityGroups",
             "Value": "launch-wizard-1"
+          },
+          {
+            "Namespace": "aws:autoscaling:launchconfiguration",
+            "OptionName": "EC2KeyName",
+            "Value": "aws_keypair"
           }
         ],
         "SolutionStackName": "64bit Amazon Linux 2016.09 v3.1.0 running Node.js"
