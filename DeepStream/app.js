@@ -7,7 +7,7 @@ var RedisMessageConnector = require( 'deepstream.io-msg-redis' );
 */
 var server = new Deepstream({
   host: '0.0.0.0',
-  port: 8080
+  port: 80
 });
 /*
 server.set( 'messageConnector', new RedisMessageConnector( {
